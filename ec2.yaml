@@ -1,0 +1,18 @@
+---
+- name: Create an ec2 instance
+  hosts: localhost
+  gather_facts: True
+  connection: ssh
+  tasks:
+  - name: Creating an instance
+    ec2:
+      key_name: NewStart
+      group: jenkinsSG
+      instance_type: t2.micro
+      image: ami-011b3ccf1bd6db744
+      wait: True
+      region: us-east-1
+      vpc_subnet_id: subnet-02d79aaeeb1ec6f58
+      assign_public_ip: yes
+      count: 1
+      region: us-east-1
